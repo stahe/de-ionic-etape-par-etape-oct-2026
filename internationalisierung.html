@@ -1,0 +1,1467 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/de-ionic-etape-par-etape-oct-2026/internationalisierung.html">
+      
+      
+        <link rel="prev" href="asynchrone-operationen-und-gemeinsamer-zustand.html">
+      
+      
+        <link rel="next" href="der-rdvmedecins-server-eine-blackbox.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>7. Internationalisierung - Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-internationalisierung" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]" class="md-header__button md-logo" aria-label="Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Internationalisierung
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum dunklen Modus wechseln"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zum dunklen Modus wechseln" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum hellen Modus wechseln"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Zum hellen Modus wechseln" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/de-ionic-etape-par-etape-oct-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]" class="md-nav__button md-logo" aria-label="Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Schritt-für-Schritt-Einführung in das Mobile-Framework [Ionic]
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/de-ionic-etape-par-etape-oct-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einleitung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einleitung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="einrichtung-der-entwicklungsumgebung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Einrichtung der Entwicklungsumgebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="erste-schritte-mit-ionic.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Erste Schritte mit Ionic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="komponenten.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Komponenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="routing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asynchrone-operationen-und-gemeinsamer-zustand.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Asynchrone Operationen und gemeinsamer Zustand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Internationalisierung
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="internationalisierung.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Internationalisierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-beispiel-21-eine-zweisprachige-anwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Beispiel 21: Eine zweisprachige Anwendung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1. Beispiel 21: Eine zweisprachige Anwendung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-die-worterbucher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1. Die Wörterbücher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-ubersetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2. Übersetzungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#713-die-ubersetzte-seite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.3. Die übersetzte Seite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#714-die-ausgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.4. Die Ausgabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="der-rdvmedecins-server-eine-blackbox.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Der RdvMedecins-Server, eine Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kommunikation-mit-dem-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Kommunikation mit dem Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="zwischenfazit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Zwischenfazit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fallstudie-der-ionic-client-fur-die-anwendung-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Fallstudie: Der Ionic-Client für die Anwendung RdvMedecins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bereitstellung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Bereitstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fazit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Fazit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="anhange.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Anhänge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-internationalisierung">7. <span style="color: #2e74b5">Internationalisierung</span></h1>
+<h2 id="71-beispiel-21-eine-zweisprachige-anwendung">7.1. <span style="color: #2e74b5">Beispiel 21: Eine zweisprachige Anwendung</span></h2>
+<p>Eine zweisprachige Anwendung hat drei Arten von Texten, die übersetzt werden müssen:</p>
+<ul>
+<li>Anwendungstexte: Beschriftungen und Meldungen. Sie werden in Wörterbüchern gespeichert, eines pro Sprache;</li>
+<li>Datumsangaben und Beträge: Das Objekt <strong><em>[Intl]</em></strong> von <em>[JavaScript]</em> formatiert sie in der gewünschten Sprache (siehe Beispiel 09);</li>
+<li>Texte von <em>[Ionic]</em> selbst: die Monate und Tage seines Kalenders, seine Schaltflächen. Der Kalender (<strong><em>[&lt;ion-datetime&gt;]</em></strong>) erhält die Sprache über sein Attribut <strong><em>[locale]</em></strong>.</li>
+</ul>
+<h3 id="711-die-worterbucher">7.1.1. <span style="color: #1f4d78">Die Wörterbücher</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">"APP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exemple 21 - deux langues"</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nt">"LANGUAGE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Langue"</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="nt">"HOME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nt">"HELLO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bonjour {{name}} !"</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="nt">"TODAY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nous sommes le {{date}}."</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nt">"PRICE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Une consultation coûte {{price}}."</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="nt">"APPOINTMENTS_zero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aucun rendez-vous"</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="nt">"APPOINTMENTS_one"</span><span class="p">:</span><span class="w"> </span><span class="s2">"un rendez-vous"</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="nt">"APPOINTMENTS_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{count}} rendez-vous"</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="nt">"ADD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ajouter un rendez-vous"</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="nt">"REMOVE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En retirer un"</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="nt">"CALENDAR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ouvrir le calendrier"</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="nt">"CALENDAR_OK"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="nt">"CALENDAR_CANCEL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Annuler"</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">  </span><span class="nt">"ERRORS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="nt">"LOGIN_TAKEN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ce login est déjà utilisé par un autre compte."</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="nt">"TOO_MANY_ATTEMPTS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trop de tentatives infructueuses. Réessayez dans {{minutes}} minute(s)."</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">  </span><span class="nt">"SERVER"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Traduire une réponse du serveur"</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="nt">"EXPLANATION"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Le serveur RdvMedecins ne renvoie que des clés. C'est le client qui les traduit :"</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Jeder Text hat einen <strong>Schlüssel</strong> (&quot;HOME.HELLO&quot;). Die Parameter werden als <strong><em>[{{name}}]</em></strong> geschrieben; ein Text mit Pluralformen hat mehrere Schlüssel: <strong><em>[_zero]</em></strong>, <strong><em>[_one]</em></strong>, <strong><em>[_other]</em></strong>. Dies sind die Konventionen der Bibliothek <em>[JavaScript] [i18next]</em>, die von den <em>[React]</em> und <em>[Vue.js]</em>-Clients von <em>[RdvMedecins]</em> verwendet wird: Die Fallstudie verwendet deren Wörterbücher, ergänzt um einige zusätzliche Schlüssel. Das englische Wörterbuch hat dieselben Schlüssel:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">"APP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 21 - two languages"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">"LANGUAGE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Language"</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="nt">"HOME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nt">"HELLO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello {{name}}!"</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="nt">"TODAY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today is {{date}}."</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nt">"PRICE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A consultation costs {{price}}."</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="nt">"APPOINTMENTS_zero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no appointment"</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="nt">"APPOINTMENTS_one"</span><span class="p">:</span><span class="w"> </span><span class="s2">"one appointment"</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nt">"APPOINTMENTS_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{count}} appointments"</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nt">"ADD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add an appointment"</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="nt">"REMOVE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove one"</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="nt">"CALENDAR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open the calendar"</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="nt">"CALENDAR_OK"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="nt">"CALENDAR_CANCEL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancel"</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">  </span><span class="nt">"ERRORS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="nt">"LOGIN_TAKEN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This login is already used by another account."</span><span class="p">,</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="nt">"TOO_MANY_ATTEMPTS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Too many failed attempts. Try again in {{minutes}} minute(s)."</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">  </span><span class="nt">"SERVER"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Translating a server response"</span><span class="p">,</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">    </span><span class="nt">"EXPLANATION"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The RdvMedecins server only sends keys. The client translates them:"</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Die Dateien im Ordner <em>[public/]</em> des Projekts werden unverändert mit der Anwendung ausgeliefert (im Browser: unter der Adresse /i18n/ex21-fr.json; unter <em>[Android]</em>: in der Anwendung selbst). Gegenüber den Wörterbüchern im Beispiel <em>[Flutter]</em> wurden zwei Schlüssel hinzugefügt: <strong><em>[CALENDAR_OK] und [CALENDAR_CANCEL]</em></strong>, die den Schaltflächen des Kalenders entsprechen (siehe unten).</p>
+<h3 id="712-ubersetzungen">7.1.2. <span style="color: #1f4d78">Übersetzungen</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span>
+<span class="normal"><a href="#__codelineno-2-68">68</a></span>
+<span class="normal"><a href="#__codelineno-2-69">69</a></span>
+<span class="normal"><a href="#__codelineno-2-70">70</a></span>
+<span class="normal"><a href="#__codelineno-2-71">71</a></span>
+<span class="normal"><a href="#__codelineno-2-72">72</a></span>
+<span class="normal"><a href="#__codelineno-2-73">73</a></span>
+<span class="normal"><a href="#__codelineno-2-74">74</a></span>
+<span class="normal"><a href="#__codelineno-2-75">75</a></span>
+<span class="normal"><a href="#__codelineno-2-76">76</a></span>
+<span class="normal"><a href="#__codelineno-2-77">77</a></span>
+<span class="normal"><a href="#__codelineno-2-78">78</a></span>
+<span class="normal"><a href="#__codelineno-2-79">79</a></span>
+<span class="normal"><a href="#__codelineno-2-80">80</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// =========================================================================</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// src/app/ex21-i18n/translations.ts - Wörterbücher, eine aktuelle Sprache</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1">// Jede Sprache hat ihr WÖRTERBUCH, eine JSON-Datei, die mit</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1">// der Anwendung ausgeliefert wird (public/i18n/ex21-fr.json, ex21-en.json), in der jeder Text</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="c1">// einen SCHLÜSSEL hat ("HOME.HELLO"):</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1">//   - t('HOME.HELLO', { name: 'Marie' }): der Text der AKTUELLEN</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">//     Sprache, in dem die Parameter {{name}} ersetzt werden;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1">//   - t('HOME.APPOINTMENTS', { count: n }): ein Text im Plural; wir</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1">//     wählen den Schlüssel APPOINTMENTS_zero, _one oder _other nach n und den Regeln</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1">//     der Sprache (im Französischen sind 0 und 1 Singular; im Englischen</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="c1">//     nur 1);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="c1">//   - changeLanguage('fr'): lädt das andere Wörterbuch. Die Sprache und das</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="c1">//     Wörterbuch sind SIGNALS: Die Templates, die t() aufrufen, werden</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="c1">//     aktualisiert, sie übersetzen sich neu.</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1">// Das sind die Konventionen der JavaScript-Bibliothek i18next: Die</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1">// Wörterbücher sind die der Clients in Vue.js, Angular und React von</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1">// RdvMedecins ... und der Server, der nur SCHLÜSSEL zurückgibt</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="c1">// ("ERRORS.LOGIN_TAKEN"), verwendet sie ebenfalls.</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="c1">// =========================================================================</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@angular/core'</span><span class="p">;</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Preferences</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">DeviceStorage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@capacitor/preferences'</span><span class="p">;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'fr'</span><span class="p">,</span><span class="w"> </span><span class="s1">'en'</span><span class="p">];</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="c1">// ein Wörterbuch: Texte oder andere Wörterbücher (verschachteltes JSON)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="kr">type</span><span class="w"> </span><span class="nx">Dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">Dictionary</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Translations</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">signal</span><span class="p">(</span><span class="s1">'en'</span><span class="p">);</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">signal</span><span class="o">&lt;</span><span class="nx">Dictionary</span><span class="o">&gt;</span><span class="p">({});</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_language</span><span class="p">.</span><span class="nx">asReadonly</span><span class="p">();</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w">  </span><span class="c1">// prefix: der Anfang des Namens der Wörterbücher (public/i18n/&lt;prefix&gt;-&lt;language&gt;.json)</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prefix</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w">  </span><span class="c1">// die Startsprache: die auf dem Gerät gespeicherte, sonst die des</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="w">  </span><span class="c1">// Telefons (falls bekannt), sonst Englisch</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">start</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">stored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">DeviceStorage</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="si">}</span><span class="sb">.language`</span><span class="w"> </span><span class="p">})).</span><span class="nx">value</span><span class="p">;</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">language</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// "en-US" -&gt; "en"</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">changeLanguage</span><span class="p">(</span><span class="nx">stored</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">(</span><span class="nx">languages</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">device</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">device</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'en'</span><span class="p">));</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">changeLanguage</span><span class="p">(</span><span class="nx">language</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">    </span><span class="c1">// fetch: liest eine mit der Anwendung ausgelieferte Datei (Ordner public/)</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`i18n/</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="si">}</span><span class="sb">-</span><span class="si">${</span><span class="nx">language</span><span class="si">}</span><span class="sb">.json`</span><span class="p">);</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_dictionary</span><span class="p">.</span><span class="nx">set</span><span class="p">((</span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Dictionary</span><span class="p">);</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_language</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">language</span><span class="p">);</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="w">    </span><span class="c1">// die Sprache der Seite (Screenreader, Silbentrennung ...)</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">language</span><span class="p">;</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">DeviceStorage</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="si">}</span><span class="sb">.language`</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">language</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="w">  </span><span class="c1">// "HOME.HELLO" -&gt; dictionary['HOME']['HELLO']; undefined, falls nicht vorhanden</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">find</span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">Dictionary</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_dictionary</span><span class="p">();</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">part</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">key</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">      </span><span class="nx">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">node</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'object'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">node</span><span class="p">[</span><span class="nx">part</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">node</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'string'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="p">;</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a>
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">  </span><span class="nx">t</span><span class="p">(</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">[</span><span class="s1">'count'</span><span class="p">];</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'number'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="w">      </span><span class="c1">// Intl.PluralRules: die Pluralform ("one", "other" ...), nach den</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="w">      </span><span class="c1">// Regeln der Sprache; der Schlüssel _zero hat, sofern vorhanden, bei 0 Vorrang</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Intl</span><span class="p">.</span><span class="nx">PluralRules</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_language</span><span class="p">()).</span><span class="nx">select</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="w">      </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">_zero`</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">form</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">    </span><span class="nx">text</span><span class="w"> </span><span class="o">??=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">    </span><span class="c1">// ein unbekannter Schlüssel wird unverändert angezeigt: So sehen wir sofort, was fehlt</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">key</span><span class="p">;</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77"></a><span class="w">    </span><span class="c1">// {{name}} -&gt; der Wert des Parameters name</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\{\{(\w+)\}\}/g</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">all</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">String</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="nx">all</span><span class="p">));</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Zeile 25: die Sprachen der Anwendung;</li>
+<li>Zeile 28: der Typ eines Wörterbuchs – ein Objekt, bei dem jede Eigenschaft entweder Text oder ein weiteres Wörterbuch ist (der Typ ist <strong>rekursiv</strong>: Er verweist auf sich selbst);</li>
+<li>Zeilen 30–33: Die Übersetzungen speichern die aktuelle Sprache und ihr Wörterbuch in Variablen. Eine einfache Klasse, kein Service <strong><em>[@Injectable]</em></strong>: Jeder Nutzer erstellt sie mit seinem eigenen Präfix (Zeile 36; Beispiel 25 hat seine eigenen Wörterbücher, <strong><em>[ex25-fr.json]</em></strong> ...). Sie wird der Seite von einer „Factory“ bereitgestellt (wird später behandelt);</li>
+<li>Zeile 36: <strong><em>[private readonly prefix]</em></strong> in den Parametern des Konstruktors deklariert UND initialisiert ein Feld: eine Abkürzung von <em>[TypeScript]</em>;</li>
+<li>Zeilen 40–44: die Ausgangssprache: die auf dem Gerät gespeicherte (das Plugin <em>[@capacitor/preferences]</em> aus Beispiel 20), andernfalls die Sprache des Telefons (<strong><em>[navigator.language]</em></strong>: „en-US“, wovon die ersten beiden Buchstaben behalten werden), sofern bekannt; andernfalls Englisch;</li>
+<li>Zeilen 46–54: Sprache wechseln: das Wörterbuch mit <strong><em>[fetch]</em></strong> lesen, der Funktion von <em>[JavaScript]</em> , die eine Adresse liest (hier eine mit der Anwendung ausgelieferte Datei) und ein <strong><em>[Promise]</em></strong> zurückgibt, das die Antwort darstellt; deren JSON-Inhalt dekodieren (<strong><em>[response.json()]</em></strong>, ein weiteres <strong><em>[Promise]</em></strong>); das Wörterbuch und die Sprache in den jeweiligen Feldern speichern; die Sprache der Seite aktualisieren (das Attribut <strong><em>[lang]</em></strong> des Tags <strong><em>[&lt;html&gt;]</em></strong>, das für Screenreader nützlich ist); die Auswahl auf dem Gerät speichern. Wir hätten den HTTP-Client von <em>[Angular]</em> (Beispiel 22) verwenden können: <strong><em>[fetch]</em></strong> vermeidet die Abhängigkeit von ihm in einer einfachen Klasse;</li>
+<li>Zeilen 57–63: Suche nach einem Schlüssel „HOME.HELLO“ im Wörterbuch: Wir steigen Teil für Teil (<strong><em>[split(&#x27;.&#x27;)]</em></strong>) durch die verschachtelten JSON-Objekte hinab. <strong><em>[typeof node === &#x27;object&#x27;]</em></strong> ist eine Typprüfung, die den Typ der Variablen in dem Zweig, in dem sie wahr ist, „eingrenzt“: <em>[TypeScript]</em> weiß dann, dass <strong><em>[node] ein Wörterbuch ist</em></strong>. Das Lesen des Signals (<strong><em>[this._dictionary()]</em></strong>, Zeile 58) ist unerlässlich: Ein Template, das <strong><em>[t()]</em></strong> aufruft, liest das Signal auf diese Weise und wird aktualisiert, wenn sich das Wörterbuch ändert;</li>
+<li>Zeilen 65–79: die Übersetzung. Bei einem Plural (ein numerischer Parameter <strong><em>[count]</em></strong>) liefert <strong><em>[Intl.PluralRules]</em></strong> die Pluralform gemäß den Regeln der Sprache: <strong><em>[select(n)]</em></strong> ergibt <strong><em>[one]</em></strong> oder <strong><em>[other]</em></strong> (andere Sprachen kennen auch <strong><em>[two]</em></strong>, <strong><em>[few]</em></strong>, <strong><em>[many]</em></strong>). Im Französischen sind 0 und 1 Singular (<strong><em>[one]</em></strong>); im Englischen nur 1. Der Schlüssel <strong><em>[_zero]</em></strong> hat, falls vorhanden, Vorrang vor 0 (Zeile 72), genau wie bei <em>[i18next]</em>. Ein unbekannter Schlüssel wird unverändert angezeigt (Zeile 76): So sieht man sofort, was fehlt. Schließlich (Zeile 78) wird jedes <strong><em>[{{name}}]</em></strong> durch den Wert des Parameters ersetzt: ein regulärer Ausdruck <strong><em>[/\{\{(\w+)\}\}/g]</em></strong> und eine Funktion, die jeden Treffer ([all]) und den in Klammern erfassten Namen ([name]) erhält.</li>
+</ul>
+<p>Warum nicht das offizielle <em>[Angular]</em>-Werkzeug verwenden? <em>[Angular]</em> hat ein eigenes Internationalisierungssystem (<em>[@angular/localize]</em>): Man markiert die Texte der Templates (<strong><em>[&lt;p i18n&gt;Hello&lt;/p&gt;]</em></strong>), extrahiert die Übersetzungen in Dateien, und die Kompilierung erzeugt EINE Anwendung pro Sprache. Das ist die beste Lösung für eine Website, deren gesamte Texte im Voraus bekannt sind. Sie wechselt die Sprache jedoch nicht „im laufenden Betrieb“, und unser Server liefert <strong>Schlüssel</strong> („ERRORS.LOGIN_TAKEN“), die zur Laufzeit übersetzt werden müssen: Ein Wörterbuch, das über den Schlüssel abgefragt wird, eignet sich dafür weit besser und erlaubt es, Wörterbücher mit anderen Clients zu teilen. Es gibt dafür auch Bibliotheken für <em>[Angular]</em> (<em>[ngx-translate]</em>, <em>[Transloco]</em>): Unser Service ist eine minimale Version davon.</p>
+<h3 id="713-die-ubersetzte-seite">7.1.3. <span style="color: #1f4d78">Die übersetzte Seite</span></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#__codelineno-3-58">58</a></span>
+<span class="normal"><a href="#__codelineno-3-59">59</a></span>
+<span class="normal"><a href="#__codelineno-3-60">60</a></span>
+<span class="normal"><a href="#__codelineno-3-61">61</a></span>
+<span class="normal"><a href="#__codelineno-3-62">62</a></span>
+<span class="normal"><a href="#__codelineno-3-63">63</a></span>
+<span class="normal"><a href="#__codelineno-3-64">64</a></span>
+<span class="normal"><a href="#__codelineno-3-65">65</a></span>
+<span class="normal"><a href="#__codelineno-3-66">66</a></span>
+<span class="normal"><a href="#__codelineno-3-67">67</a></span>
+<span class="normal"><a href="#__codelineno-3-68">68</a></span>
+<span class="normal"><a href="#__codelineno-3-69">69</a></span>
+<span class="normal"><a href="#__codelineno-3-70">70</a></span>
+<span class="normal"><a href="#__codelineno-3-71">71</a></span>
+<span class="normal"><a href="#__codelineno-3-72">72</a></span>
+<span class="normal"><a href="#__codelineno-3-73">73</a></span>
+<span class="normal"><a href="#__codelineno-3-74">74</a></span>
+<span class="normal"><a href="#__codelineno-3-75">75</a></span>
+<span class="normal"><a href="#__codelineno-3-76">76</a></span>
+<span class="normal"><a href="#__codelineno-3-77">77</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// =========================================================================</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">// src/app/ex21-i18n/ex21.page.ts - eine Anwendung in zwei Sprachen</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">//   - die TEXTE der Anwendung: die Wörterbücher (translations.ts),</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">//     der Seite per Dependency Injection bereitgestellt (providers);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">//   - die Datumsangaben und die Beträge: das Objekt Intl von JavaScript, in der</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">//     aktuellen Sprache (siehe Beispiel 09);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">//   - die Texte von Ionic SELBST (der Kalender): das Attribut locale</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1">//     von &lt;ion-datetime&gt; und seine Schaltflächen, übersetzt durch unsere Wörterbücher.</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">// Ein Sprachwechsel übersetzt den ganzen Bildschirm neu, ohne Neustart.</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1">// =========================================================================</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="p">,</span><span class="w"> </span><span class="nx">computed</span><span class="p">,</span><span class="w"> </span><span class="nx">effect</span><span class="p">,</span><span class="w"> </span><span class="nx">inject</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@angular/core'</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Title</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">  </span><span class="nx">IonBackButton</span><span class="p">,</span><span class="w"> </span><span class="nx">IonButton</span><span class="p">,</span><span class="w"> </span><span class="nx">IonButtons</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCard</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCardContent</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCardHeader</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCardSubtitle</span><span class="p">,</span><span class="w"> </span><span class="nx">IonContent</span><span class="p">,</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">  </span><span class="nx">IonDatetime</span><span class="p">,</span><span class="w"> </span><span class="nx">IonHeader</span><span class="p">,</span><span class="w"> </span><span class="nx">IonIcon</span><span class="p">,</span><span class="w"> </span><span class="nx">IonLabel</span><span class="p">,</span><span class="w"> </span><span class="nx">IonModal</span><span class="p">,</span><span class="w"> </span><span class="nx">IonSegment</span><span class="p">,</span><span class="w"> </span><span class="nx">IonSegmentButton</span><span class="p">,</span><span class="w"> </span><span class="nx">IonTitle</span><span class="p">,</span><span class="w"> </span><span class="nx">IonToolbar</span><span class="p">,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">  </span><span class="nx">SegmentValue</span><span class="p">,</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@ionic/angular'</span><span class="p">;</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">addIcons</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ionicons'</span><span class="p">;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">calendarOutline</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ionicons/icons'</span><span class="p">;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">languages</span><span class="p">,</span><span class="w"> </span><span class="nx">Translations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./translations'</span><span class="p">;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="c1">// was der RdvMedecins-Server zurückgeben würde (siehe das Kapitel zur Blackbox)</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="kd">const</span><span class="w"> </span><span class="nx">serverResponses</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">}[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">409</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">'ERRORS.LOGIN_TAKEN'</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">429</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">'ERRORS.TOO_MANY_ATTEMPTS'</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">minutes</span><span class="o">:</span><span class="w"> </span><span class="s1">'15'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="p">];</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="kd">@Component</span><span class="p">({</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">'app-ex21'</span><span class="p">,</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">    </span><span class="nx">IonHeader</span><span class="p">,</span><span class="w"> </span><span class="nx">IonToolbar</span><span class="p">,</span><span class="w"> </span><span class="nx">IonButtons</span><span class="p">,</span><span class="w"> </span><span class="nx">IonBackButton</span><span class="p">,</span><span class="w"> </span><span class="nx">IonTitle</span><span class="p">,</span><span class="w"> </span><span class="nx">IonSegment</span><span class="p">,</span><span class="w"> </span><span class="nx">IonSegmentButton</span><span class="p">,</span><span class="w"> </span><span class="nx">IonLabel</span><span class="p">,</span><span class="w"> </span><span class="nx">IonContent</span><span class="p">,</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="nx">IonCard</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCardHeader</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCardSubtitle</span><span class="p">,</span><span class="w"> </span><span class="nx">IonCardContent</span><span class="p">,</span><span class="w"> </span><span class="nx">IonButton</span><span class="p">,</span><span class="w"> </span><span class="nx">IonIcon</span><span class="p">,</span><span class="w"> </span><span class="nx">IonModal</span><span class="p">,</span><span class="w"> </span><span class="nx">IonDatetime</span><span class="p">,</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">  </span><span class="nx">templateUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">'./ex21.page.html'</span><span class="p">,</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">  </span><span class="c1">// ein für die Seite SPEZIFISCHER Provider: die Übersetzungen der Wörterbücher ex21-*.json</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">Translations</span><span class="p">,</span><span class="w"> </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Translations</span><span class="p">(</span><span class="s1">'ex21'</span><span class="p">)</span><span class="w"> </span><span class="p">}],</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">  </span><span class="nx">styles</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="sb">    ion-segment { width: 110px; margin-inline-end: 8px; }</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="sb">    ion-segment-button { min-width: 50px; }</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="sb">    ion-modal.calendar { --width: fit-content; --height: fit-content; --border-radius: 8px; }</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="sb">    .code { font-family: monospace; font-size: 12px; }</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="sb">  `</span><span class="p">,</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="p">})</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Ex21Page</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inject</span><span class="p">(</span><span class="nx">Translations</span><span class="p">);</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">languages</span><span class="p">;</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">serverResponses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">serverResponses</span><span class="p">;</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">signal</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="w">  </span><span class="c1">// Formatierung in der AKTUELLEN Sprache: wird neu berechnet, wenn sie sich ändert</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">computed</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nb">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">.</span><span class="nx">language</span><span class="p">(),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dateStyle</span><span class="o">:</span><span class="w"> </span><span class="s1">'full'</span><span class="w"> </span><span class="p">}).</span><span class="nx">format</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">today</span><span class="p">),</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="w">  </span><span class="p">);</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">computed</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nb">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">.</span><span class="nx">language</span><span class="p">(),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s1">'currency'</span><span class="p">,</span><span class="w"> </span><span class="nx">currency</span><span class="o">:</span><span class="w"> </span><span class="s1">'EUR'</span><span class="w"> </span><span class="p">}).</span><span class="nx">format</span><span class="p">(</span><span class="mf">1234.5</span><span class="p">),</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">  </span><span class="p">);</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">  </span><span class="c1">// die Sprache von ion-datetime: ein vollständiges "Locale" (Sprache-Land)</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">locale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">computed</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">.</span><span class="nx">language</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'fr'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'fr-FR'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'en-US'</span><span class="p">));</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62"></a>
+<a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="w">    </span><span class="nx">addIcons</span><span class="p">({</span><span class="w"> </span><span class="nx">calendarOutline</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="w">    </span><span class="c1">// der Titel des Dokuments (Browser-Tab), übersetzt: ein Effect,</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="w">    </span><span class="c1">// der erneut ausgeführt wird, wenn sich die Sprache ändert</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">inject</span><span class="p">(</span><span class="nx">Title</span><span class="p">);</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="w">    </span><span class="nx">effect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">title</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">.</span><span class="nx">t</span><span class="p">(</span><span class="s1">'APP.TITLE'</span><span class="p">)));</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71"></a>
+<a id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="w">  </span><span class="c1">// das Segment der oberen Leiste: Sein Wert (vom Typ SegmentValue: eine</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73"></a><span class="w">  </span><span class="c1">// Zeichenkette oder eine Zahl) ist die gewählte Sprache</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="w">  </span><span class="nx">chooseLanguage</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">SegmentValue</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">tr</span><span class="p">.</span><span class="nx">changeLanguage</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span>
+<span class="normal"><a href="#__codelineno-4-29">29</a></span>
+<span class="normal"><a href="#__codelineno-4-30">30</a></span>
+<span class="normal"><a href="#__codelineno-4-31">31</a></span>
+<span class="normal"><a href="#__codelineno-4-32">32</a></span>
+<span class="normal"><a href="#__codelineno-4-33">33</a></span>
+<span class="normal"><a href="#__codelineno-4-34">34</a></span>
+<span class="normal"><a href="#__codelineno-4-35">35</a></span>
+<span class="normal"><a href="#__codelineno-4-36">36</a></span>
+<span class="normal"><a href="#__codelineno-4-37">37</a></span>
+<span class="normal"><a href="#__codelineno-4-38">38</a></span>
+<span class="normal"><a href="#__codelineno-4-39">39</a></span>
+<span class="normal"><a href="#__codelineno-4-40">40</a></span>
+<span class="normal"><a href="#__codelineno-4-41">41</a></span>
+<span class="normal"><a href="#__codelineno-4-42">42</a></span>
+<span class="normal"><a href="#__codelineno-4-43">43</a></span>
+<span class="normal"><a href="#__codelineno-4-44">44</a></span>
+<span class="normal"><a href="#__codelineno-4-45">45</a></span>
+<span class="normal"><a href="#__codelineno-4-46">46</a></span>
+<span class="normal"><a href="#__codelineno-4-47">47</a></span>
+<span class="normal"><a href="#__codelineno-4-48">48</a></span>
+<span class="normal"><a href="#__codelineno-4-49">49</a></span>
+<span class="normal"><a href="#__codelineno-4-50">50</a></span>
+<span class="normal"><a href="#__codelineno-4-51">51</a></span>
+<span class="normal"><a href="#__codelineno-4-52">52</a></span>
+<span class="normal"><a href="#__codelineno-4-53">53</a></span>
+<span class="normal"><a href="#__codelineno-4-54">54</a></span>
+<span class="normal"><a href="#__codelineno-4-55">55</a></span>
+<span class="normal"><a href="#__codelineno-4-56">56</a></span>
+<span class="normal"><a href="#__codelineno-4-57">57</a></span>
+<span class="normal"><a href="#__codelineno-4-58">58</a></span>
+<span class="normal"><a href="#__codelineno-4-59">59</a></span>
+<span class="normal"><a href="#__codelineno-4-60">60</a></span>
+<span class="normal"><a href="#__codelineno-4-61">61</a></span>
+<span class="normal"><a href="#__codelineno-4-62">62</a></span>
+<span class="normal"><a href="#__codelineno-4-63">63</a></span>
+<span class="normal"><a href="#__codelineno-4-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">&lt;!-- ======================================================================</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="cm">     ex21.page.html - eine Seite in zwei Sprachen</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="cm">     ====================================================================== --&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">&lt;</span><span class="nt">ion-header</span><span class="p">&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>  <span class="p">&lt;</span><span class="nt">ion-toolbar</span> <span class="na">color</span><span class="o">=</span><span class="s">"primary"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>    <span class="p">&lt;</span><span class="nt">ion-buttons</span> <span class="na">slot</span><span class="o">=</span><span class="s">"start"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>      <span class="p">&lt;</span><span class="nt">ion-back-button</span> <span class="na">defaultHref</span><span class="o">=</span><span class="s">"/"</span> <span class="p">/&gt;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="p">&lt;/</span><span class="nt">ion-buttons</span><span class="p">&gt;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="p">&lt;</span><span class="nt">ion-title</span><span class="p">&gt;</span>{{ tr.t('APP.TITLE') }}<span class="p">&lt;/</span><span class="nt">ion-title</span><span class="p">&gt;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="cm">&lt;!-- die Sprachen: ein "Segment", Schaltflächen, von denen nur eine gewählt ist --&gt;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="p">&lt;</span><span class="nt">ion-segment</span> <span class="na">slot</span><span class="o">=</span><span class="s">"end"</span> <span class="err">[</span><span class="na">value</span><span class="err">]="</span><span class="na">tr</span><span class="err">.</span><span class="na">language</span><span class="err">()"</span> <span class="err">(</span><span class="na">ionChange</span><span class="err">)="</span><span class="na">chooseLanguage</span><span class="err">($</span><span class="na">event</span><span class="err">.</span><span class="na">detail</span><span class="err">.</span><span class="na">value</span><span class="err">)"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>      @for (l of languages; track l) {
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>        <span class="p">&lt;</span><span class="nt">ion-segment-button</span> <span class="err">[</span><span class="na">value</span><span class="err">]="</span><span class="na">l</span><span class="err">"</span><span class="p">&gt;&lt;</span><span class="nt">ion-label</span><span class="p">&gt;</span>{{ l.toUpperCase() }}<span class="p">&lt;/</span><span class="nt">ion-label</span><span class="p">&gt;&lt;/</span><span class="nt">ion-segment-button</span><span class="p">&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>      }
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>    <span class="p">&lt;/</span><span class="nt">ion-segment</span><span class="p">&gt;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>  <span class="p">&lt;/</span><span class="nt">ion-toolbar</span><span class="p">&gt;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="p">&lt;/</span><span class="nt">ion-header</span><span class="p">&gt;</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="p">&lt;</span><span class="nt">ion-content</span> <span class="na">class</span><span class="o">=</span><span class="s">"ion-padding"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>  <span class="p">&lt;</span><span class="nt">ion-card</span><span class="p">&gt;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>    <span class="p">&lt;</span><span class="nt">ion-card-content</span><span class="p">&gt;</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ tr.t('HOME.HELLO', { name: 'Marie' }) }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ tr.t('HOME.TODAY', { date: date() }) }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a>      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ tr.t('HOME.PRICE', { price: price() }) }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>      <span class="cm">&lt;!-- count: wählt die Pluralform und ersetzt {{count}} --&gt;</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ tr.t('HOME.APPOINTMENTS', { count: count() }) }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>      <span class="p">&lt;</span><span class="nt">ion-button</span> <span class="na">fill</span><span class="o">=</span><span class="s">"clear"</span> <span class="na">size</span><span class="o">=</span><span class="s">"small"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">count</span><span class="err">.</span><span class="na">set</span><span class="err">(</span><span class="na">count</span><span class="err">()</span> <span class="err">+</span> <span class="na">1</span><span class="err">)"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>        {{ tr.t('HOME.ADD') }}<span class="p">&lt;/</span><span class="nt">ion-button</span><span class="p">&gt;</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>      <span class="p">&lt;</span><span class="nt">ion-button</span> <span class="na">fill</span><span class="o">=</span><span class="s">"clear"</span> <span class="na">size</span><span class="o">=</span><span class="s">"small"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="</span><span class="na">count</span><span class="err">()</span> <span class="err">===</span> <span class="na">0</span><span class="err">"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">count</span><span class="err">.</span><span class="na">set</span><span class="err">(</span><span class="na">count</span><span class="err">()</span> <span class="na">-</span> <span class="na">1</span><span class="err">)"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>        {{ tr.t('HOME.REMOVE') }}<span class="p">&lt;/</span><span class="nt">ion-button</span><span class="p">&gt;</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>      <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>      <span class="cm">&lt;!-- die Schaltfläche id="calendar" öffnet den modalen Dialog trigger="calendar" --&gt;</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>      <span class="p">&lt;</span><span class="nt">ion-button</span> <span class="na">id</span><span class="o">=</span><span class="s">"calendar"</span> <span class="na">fill</span><span class="o">=</span><span class="s">"outline"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a>        <span class="p">&lt;</span><span class="nt">ion-icon</span> <span class="na">slot</span><span class="o">=</span><span class="s">"start"</span> <span class="na">name</span><span class="o">=</span><span class="s">"calendar-outline"</span> <span class="p">/&gt;</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a>        {{ tr.t('HOME.CALENDAR') }}
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a>      <span class="p">&lt;/</span><span class="nt">ion-button</span><span class="p">&gt;</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a>      <span class="p">&lt;</span><span class="nt">ion-modal</span> <span class="na">class</span><span class="o">=</span><span class="s">"calendar"</span> <span class="na">trigger</span><span class="o">=</span><span class="s">"calendar"</span><span class="p">&gt;</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a>        <span class="cm">&lt;!-- ng-template: Der Inhalt wird erst erzeugt, wenn sich der Dialog öffnet --&gt;</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40"></a>        <span class="p">&lt;</span><span class="nt">ng-template</span><span class="p">&gt;</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41"></a>          <span class="cm">&lt;!-- locale: die Monate und die Tage in der aktuellen Sprache (Intl);</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="cm">               firstDayOfWeek: Montag (1) auf Französisch, Sonntag (0) auf Englisch --&gt;</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43"></a>          <span class="p">&lt;</span><span class="nt">ion-datetime</span> <span class="na">presentation</span><span class="o">=</span><span class="s">"date"</span> <span class="na">min</span><span class="o">=</span><span class="s">"2026-01-01"</span> <span class="na">max</span><span class="o">=</span><span class="s">"2027-12-31"</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44"></a>            <span class="err">[</span><span class="na">locale</span><span class="err">]="</span><span class="na">locale</span><span class="err">()"</span> <span class="err">[</span><span class="na">firstDayOfWeek</span><span class="err">]="</span><span class="na">tr</span><span class="err">.</span><span class="na">language</span><span class="err">()</span> <span class="err">===</span> <span class="err">'</span><span class="na">fr</span><span class="err">'</span> <span class="err">?</span> <span class="na">1</span> <span class="na">:</span> <span class="na">0</span><span class="err">"</span> <span class="err">[</span><span class="na">showDefaultButtons</span><span class="err">]="</span><span class="na">true</span><span class="err">"</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45"></a>            <span class="err">[</span><span class="na">doneText</span><span class="err">]="</span><span class="na">tr</span><span class="err">.</span><span class="na">t</span><span class="err">('</span><span class="na">HOME</span><span class="err">.</span><span class="na">CALENDAR_OK</span><span class="err">')"</span> <span class="err">[</span><span class="na">cancelText</span><span class="err">]="</span><span class="na">tr</span><span class="err">.</span><span class="na">t</span><span class="err">('</span><span class="na">HOME</span><span class="err">.</span><span class="na">CALENDAR_CANCEL</span><span class="err">')"</span> <span class="p">/&gt;</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46"></a>        <span class="p">&lt;/</span><span class="nt">ng-template</span><span class="p">&gt;</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47"></a>      <span class="p">&lt;/</span><span class="nt">ion-modal</span><span class="p">&gt;</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48"></a>    <span class="p">&lt;/</span><span class="nt">ion-card-content</span><span class="p">&gt;</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49"></a>  <span class="p">&lt;/</span><span class="nt">ion-card</span><span class="p">&gt;</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50"></a>
+<a id="__codelineno-4-51" name="__codelineno-4-51"></a>  <span class="p">&lt;</span><span class="nt">ion-card</span><span class="p">&gt;</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52"></a>    <span class="p">&lt;</span><span class="nt">ion-card-header</span><span class="p">&gt;</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53"></a>      <span class="p">&lt;</span><span class="nt">ion-card-subtitle</span><span class="p">&gt;</span>{{ tr.t('SERVER.TITLE') }}<span class="p">&lt;/</span><span class="nt">ion-card-subtitle</span><span class="p">&gt;</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54"></a>    <span class="p">&lt;/</span><span class="nt">ion-card-header</span><span class="p">&gt;</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55"></a>    <span class="p">&lt;</span><span class="nt">ion-card-content</span><span class="p">&gt;</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56"></a>      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ tr.t('SERVER.EXPLANATION') }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57"></a>      <span class="cm">&lt;!-- der Schlüssel des Servers IST ein Schlüssel des Wörterbuchs; params liefert seine Parameter --&gt;</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58"></a>      @for (r of serverResponses; track r.key) {
+<a id="__codelineno-4-59" name="__codelineno-4-59"></a>        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"code ion-margin-top"</span><span class="p">&gt;</span>{{ r.statusCode }} {{ r.key }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60"></a>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>→ {{ tr.t(r.key, r.params) }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61"></a>      }
+<a id="__codelineno-4-62" name="__codelineno-4-62"></a>    <span class="p">&lt;/</span><span class="nt">ion-card-content</span><span class="p">&gt;</span>
+<a id="__codelineno-4-63" name="__codelineno-4-63"></a>  <span class="p">&lt;/</span><span class="nt">ion-card</span><span class="p">&gt;</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64"></a><span class="p">&lt;/</span><span class="nt">ion-content</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Zeilen 25–28 (.ts): was der Server für <em>[RdvMedecins]</em> zurückgeben würde: ein HTTP-Code, ein Schlüssel und seine Parameter;</li>
+<li>Zeile 38 (.ts): ein Provider, der SPEZIFISCH für die Seite gilt: <strong><em>[providers]</em></strong> im Dekorator <strong><em>[@Component]</em></strong> erstellt eine Instanz der Übersetzungen für diese Seite (und ihre Komponenten), die zusammen mit ihr zerstört wird. <strong><em>[useFactory]</em></strong> liefert die Funktion, die sie samt ihrem Präfix erstellt;</li>
+<li>Zeilen 40–42 (.ts): die Größe der Sprachauswahl und die des Kalenderfensters (ein Dialogfeld, das auf seinen Inhalt zugeschnitten ist, statt einer ganzen Seite);</li>
+<li>Zeile 47 (.ts): die Übersetzungen, als Service bezogen;</li>
+<li>Zeilen 54–59 (.ts): Datum und Preis, in der aktuellen Sprache formatiert von <strong><em>[Intl.DateTimeFormat]</em></strong> (<strong><em>[dateStyle: &#x27;full&#x27;]</em></strong>: „Tuesday, October 6, 2026“, „mardi 6 octobre 2026“) und <strong><em>[Intl.NumberFormat]</em></strong> (<strong><em>[style: &#x27;currency&#x27;]</em></strong>: „€1,234.50“, „1 234,50 €“). Dies sind berechnete Signals: Sie erkennen die Sprache und werden bei deren Änderung neu berechnet. (Die Pipes <strong><em>[date]</em></strong> und <strong><em>[currency]</em></strong> <em>von [Angular]</em> akzeptieren ebenfalls eine Sprache als Parameter, doch dann müssen die Regeln jeder Sprache hinterlegt werden, wie es <strong><em>[main.ts]</em></strong> für Französisch tut.)</li>
+<li>Zeile 61 (.ts): die Sprache des Kalenders im Format Sprache-Land, das von <strong><em>[&lt;ion-datetime&gt;]</em></strong> erwartet wird;</li>
+<li>Zeile 65 (.ts): die Ausgangssprache;</li>
+<li>Zeilen 68–69 (.ts): der Dokumenttitel (der Browser-Tab), übersetzt: der Service <strong><em>[Title]</em></strong> von <em>[Angular]</em>, aufgerufen durch einen Effekt, der bei einem Sprachwechsel erneut ausgeführt wird;</li>
+<li>Zeilen 74–76 (.ts): Sprachauswahl;</li>
+<li>Zeile 10 (html): der Seitentitel, übersetzt;</li>
+<li>Zeilen 12–16 (html): die Sprachauswahl in der oberen Leiste: ein <strong><em>[&lt;ion-segment&gt;]</em></strong>, bestehend aus Schaltflächen, von denen nur eine ausgewählt ist (<strong><em>[value]</em></strong>), das Gegenstück zum <strong><em>[SegmentedButton]</em></strong> von <em>[Flutter]</em>;</li>
+<li>Zeilen 23–25 (HTML): parametrisierter Text. Datum und Preis, bereits formatiert, werden als Parameter übergeben;</li>
+<li>Zeile 27 (html): <strong><em>[count]</em></strong> wählt die Pluralform aus und ersetzt <strong><em>[{{count}}]</em></strong>;</li>
+<li>Zeilen 34–47 (html): der Kalender in einem modalen Fenster (<strong><em>[&lt;ion-modal&gt;]</em></strong>), das von der Schaltfläche geöffnet wird, deren <strong><em>[id]</em></strong> von seinem Attribut <strong><em>[trigger]</em></strong> angegeben wird. Sein Inhalt in einem <strong><em>[&lt;ng-template&gt;]</em></strong> wird erst beim Öffnen des Fensters erstellt. <strong><em>[&lt;ion-datetime&gt;]</em></strong> formatiert die Monate und Tage mit <strong><em>[Intl]</em></strong> in der Sprache, die sein Attribut <strong><em>[[locale]]</em></strong> angibt; <strong><em>[[firstDayOfWeek]]</em></strong>: Die Woche beginnt im Französischen am Montag und im Englischen am Sonntag. Seine Schaltflächen („Done“, „Cancel“ standardmäßig) werden von <strong><em>[locale]</em></strong> nicht übersetzt: <strong><em>[[doneText]]</em></strong> und <strong><em>[[cancelText]]</em></strong> erhalten die Texte aus unseren Wörterbüchern. Das war das Paket <em>[flutter_localizations]</em> zusammen mit <em>[Flutter]</em>;</li>
+<li>Zeilen 58–61 (html): was der Server von <em>[RdvMedecins]</em> zurückgeben würde. Der Schlüssel des Servers IST ein Wörterbuchschlüssel; seine Parameter sind die des Textes.</li>
+</ul>
+<h3 id="714-die-ausgabe">7.1.4. <span style="color: #1f4d78">Die Ausgabe</span></h3>
+<p>Auf Englisch (links); auf Französisch nach einem Hinzufügen (Mitte); der Kalender auf Französisch (rechts):</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000043A00000926A6D3937A.png" width="179" height="387" style="display:inline-block; margin:4px;width:4.733cm;height:10.245cm;" class="odt-zoomable" data-zoom-src="images/100000000000043A00000926A6D3937A.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000043A00000926CA72CF2D.png" width="179" height="387" style="display:inline-block; margin:4px;width:4.733cm;height:10.245cm;" class="odt-zoomable" data-zoom-src="images/100000000000043A00000926CA72CF2D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000043A0000092658989A35.png" width="179" height="387" style="display:inline-block; margin:4px;width:4.733cm;height:10.245cm;" class="odt-zoomable" data-zoom-src="images/100000000000043A0000092658989A35.png" /></td></tr></table>
+
+<p>Ein Sprachwechsel übersetzt den gesamten Bildschirm neu, ohne Neustart und ohne Anfragen an den Server: Sprache und Wörterbuch sind Signals, und alles, was sie liest (Template-Texte, Datum, Preis, Titel), zieht nach. Die gewählte Sprache wird auf dem Gerät gespeichert: Starten Sie die App neu (im Browser: die Seite neu laden), und sie öffnet sich in der zuletzt gewählten Sprache.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Dieses Tutorial, geschrieben von der KI <strong>Claude</strong> von Anthropic im Auftrag von <strong>Serge Tahé</strong>, wird der Öffentlichkeit unter den Bedingungen der Lizenz
+        <em>Creative Commons Namensnennung – Nicht kommerziell –
+        Weitergabe unter gleichen Bedingungen 3.0 Unported</em> zur Verfügung gestellt.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
